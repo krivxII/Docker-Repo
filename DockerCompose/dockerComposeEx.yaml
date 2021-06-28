@@ -1,0 +1,28 @@
+
+ersion: '3' ## Version de docker-compose
+services: ## Cada uno de los hijos es un servicio a levantar
+  mongodb: ## Nombre del servicio
+    container_name: my-web-container ## Nombre alternativo para el contenedor
+    image: mongo ## nombre de la imagen base, de no especificar busca en dockerhub
+    build: ./dir ## Ruta de un docker file para crear el contenedor 
+    #&&
+    build:  ## objeto con:
+      context: ./dir ##Directorio del dockerfile o url de un github
+      dockerfile: Dockerfile-alternate 
+      args: ## Lista de argumentos que se pueden pasar durante el prceso de construccion
+        arg1: 1 ## argumento 1
+        arg2: 2 ## argumento 2
+    networks: host ## Crea una red que conectara a los contenedores durante el proceso de construccion
+    hostname: myhost ## Setea el nombre del host para no usar la ip del host
+    ports: ## Expone el puerto Host:Container
+      - 27017:27017
+    environment: ## Variables de entorno  a setear 
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=password
+    resources: ## Familia de parametros usados para manejar los recursos del contenedor
+      limits: ## Se especifican los limites de dichos recursos
+        cpus: '0.50' ## 50% de un nucleo del cpu
+        memory: 50M ## 50Megas de memoria ram maxima
+      reservations: ## Se especifica el minimo de requisitos que siemmpre tendra disponible
+        cpus: '0.25' 
+        memory: 20M   
