@@ -1,7 +1,4 @@
 version: '3'
-networks:
-  app-network:
-    driver: bridge
 
 services:
   redis:
@@ -12,8 +9,7 @@ services:
     - "6379:6379"
     volumes:
     - ./data:/data ## de querer tener persistencia
-    networks:
-    - app-network
+
   redis-commander:
       container_name: redis-commander
       hostname: redis-commander
@@ -23,7 +19,5 @@ services:
       - REDIS_HOSTS=local:redis:6379
       ports:
       - "8081:8081"
-      networks:
-      - app-network  
       depends_on:
       - redis
