@@ -16,7 +16,7 @@ Levantara dos contenedores
 ---
 
 Para agregar tu configuracion y aun ser capaz de conectarte en redis.conf
-busca 
+busca
 
 ```bash
  bind 127.0.0.1
