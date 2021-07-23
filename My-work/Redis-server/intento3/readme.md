@@ -27,3 +27,15 @@ y cambiala por
 ```bash
  bind redis
 ```
+
+Luego para poder iniciar el cliente de redis desde el contenedor debes usar el siguiente comando
+
+```bash
+redis-cli -h redis -p "puerto"
+```
+
+De tener contraseña
+
+```bash
+redis-cli -h SERVER-IP -a YOURPASSWORD
+```
